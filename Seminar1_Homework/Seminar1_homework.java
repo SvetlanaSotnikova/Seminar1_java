@@ -1,57 +1,56 @@
-import java.sql.Struct;
+
 import java.util.Scanner;
 
 public class Seminar1_homework {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // System.out.print("Input number: ");
-        // int number = scanner.nextInt();
-        // System.out.println("Result: " + task1(number));
+        System.out.print("Input number: ");
+        int number = scanner.nextInt();
+        System.out.println("Result: " + task1(number));
 
-        // System.out.println();
+        System.out.println();
 
-        // System.out.print("Input start interval: ");
-        // int startInterval = scanner.nextInt();
+        System.out.print("Input start interval: ");
+        int startInterval = scanner.nextInt();
 
-        // System.out.print("Input end interval: ");
-        // int endInterval = scanner.nextInt();
+        System.out.print("Input end interval: ");
+        int endInterval = scanner.nextInt();
 
-        // System.out.println("Prime numbers in the range from " + startInterval + " to
-        // " + endInterval + ":");
+        System.out.println("Prime numbers in the range from " + startInterval + " to" + endInterval + ":");
 
-        // for (int i = startInterval; i <= endInterval; i++) {
-        // if (task2(i)) {
-        // System.out.print(i + " ");
-        // }
-        // }
+        for (int i = startInterval; i <= endInterval; i++) {
+        if (task2(i)) {
+        System.out.print(i + " ");
+        }
+        }
 
-        // System.out.println();
+        System.out.println();
 
-        // boolean isValid = false;
-        // while (!isValid) {
-        // try {
-        // System.out.print("Input number 1: ");
-        // double number1 = scanner.nextDouble();
+        boolean isValid = false;
+        while (!isValid) {
+        try {
+        System.out.print("Input number 1: ");
+        double number1 = scanner.nextDouble();
 
-        // System.out.print("Input operator (+, -, *, /): ");
-        // char operator = scanner.next().charAt(0);
+        System.out.print("Input operator (+, -, *, /): ");
+        char operator = scanner.next().charAt(0);
 
-        // System.out.print("Input number 2: ");
-        // double number2 = scanner.nextDouble();
+        System.out.print("Input number 2: ");
+        double number2 = scanner.nextDouble();
 
-        // double result = task3(operator, number1, number2);
-        // System.out.print(number1 + " " + operator + " " + number2 + " = " + result);
+        double result = task3(operator, number1, number2);
+        System.out.print(number1 + " " + operator + " " + number2 + " = " + result);
 
-        // isValid = true;
-        // } catch (java.util.InputMismatchException e) {
-        // System.out.println("Ошибка ввода. Пожалуйста, введите корректные числа.");
-        // scanner.nextLine(); // Очистка буфера ввода
-        // } catch (ArithmeticException e) {
-        // System.out.println("Ошибка арифметической операции: " + e.getMessage());
-        // } catch (Exception e) {
-        // System.out.println("Произошла ошибка: " + e.getMessage());
-        // }
-        // }
+        isValid = true;
+        } catch (java.util.InputMismatchException e) {
+        System.out.println("Ошибка ввода. Пожалуйста, введите корректные числа.");
+        scanner.nextLine(); // Очистка буфера ввода
+        } catch (ArithmeticException e) {
+        System.out.println("Ошибка арифметической операции: " + e.getMessage());
+        } catch (Exception e) {
+        System.out.println("Произошла ошибка: " + e.getMessage());
+        }
+        }
 
         task4();
 
