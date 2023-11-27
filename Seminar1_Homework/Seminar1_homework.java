@@ -257,6 +257,7 @@ public class Seminar1_homework {
         // scanner.close();
         // return;
         // }
+        scanner.close();
     }
 
     static boolean isValidEquationFormat(String equation) {
