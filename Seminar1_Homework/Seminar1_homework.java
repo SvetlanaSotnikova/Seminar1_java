@@ -19,37 +19,37 @@ public class Seminar1_homework {
         System.out.println("Prime numbers in the range from " + startInterval + " to" + endInterval + ":");
 
         for (int i = startInterval; i <= endInterval; i++) {
-        if (task2(i)) {
-        System.out.print(i + " ");
-        }
+            if (task2(i)) {
+                System.out.print(i + " ");
+            }
         }
 
         System.out.println();
 
         boolean isValid = false;
         while (!isValid) {
-        try {
-        System.out.print("Input number 1: ");
-        double number1 = scanner.nextDouble();
+            try {
+                System.out.print("Input number 1: ");
+                double number1 = scanner.nextDouble();
 
-        System.out.print("Input operator (+, -, *, /): ");
-        char operator = scanner.next().charAt(0);
+                System.out.print("Input operator (+, -, *, /): ");
+                char operator = scanner.next().charAt(0);
 
-        System.out.print("Input number 2: ");
-        double number2 = scanner.nextDouble();
+                System.out.print("Input number 2: ");
+                double number2 = scanner.nextDouble();
 
-        double result = task3(operator, number1, number2);
-        System.out.print(number1 + " " + operator + " " + number2 + " = " + result);
+                double result = task3(operator, number1, number2);
+                System.out.print(number1 + " " + operator + " " + number2 + " = " + result);
 
-        isValid = true;
-        } catch (java.util.InputMismatchException e) {
-        System.out.println("Ошибка ввода. Пожалуйста, введите корректные числа.");
-        scanner.nextLine(); // Очистка буфера ввода
-        } catch (ArithmeticException e) {
-        System.out.println("Ошибка арифметической операции: " + e.getMessage());
-        } catch (Exception e) {
-        System.out.println("Произошла ошибка: " + e.getMessage());
-        }
+                isValid = true;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Ошибка ввода. Пожалуйста, введите корректные числа.");
+                scanner.nextLine(); // Очистка буфера ввода
+            } catch (ArithmeticException e) {
+                System.out.println("Ошибка арифметической операции: " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Произошла ошибка: " + e.getMessage());
+            }
         }
 
         task4();
@@ -136,7 +136,8 @@ public class Seminar1_homework {
     }
 
     static boolean isValidEquationFormat(String equation) {
-        // Просто проверяем, что строка содержит 3 цифры, разделенные знаками '?', '+', '='
+        // Просто проверяем, что строка содержит 3 цифры, разделенные знаками '?', '+',
+        // '='
         return equation.matches("\\d[?]\\s?\\+\\s?[?]\\s?=\\s?\\d");
     }
 
