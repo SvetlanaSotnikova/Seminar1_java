@@ -52,6 +52,8 @@ public class Seminar1_homework {
             }
         }
 
+        System.out.println();
+
         task4();
 
         scanner.close();
@@ -114,25 +116,147 @@ public class Seminar1_homework {
         System.out.print("Enter the equation (use '?' for unknown digits, e.g., 2? + ?5 = 69): ");
         String equation = scanner.nextLine();
 
-        if (isValidEquationFormat(equation)) {
+        equation = equation.replace(" ", "");
+
+        // if (isValidEquationFormat(equation)) {
+        if (true) {
             System.out.println("Equation format is valid.");
 
-            // Извлекаем значения q, w, e из уравнения
-            int q = Character.getNumericValue(equation.charAt(0));
-            int w = Character.getNumericValue(equation.charAt(4));
-            int e = Character.getNumericValue(equation.charAt(8));
+            int eqlength = equation.length();
 
-            // Проверяем условие уравнения
-            if (q + w == e) {
-                System.out.println("Equation is satisfied: " + q + " + " + w + " = " + e);
-            } else {
+            int plus = equation.indexOf("+");
+            int eq = equation.indexOf("=");
+
+            int length1 = plus;
+            int length2 = eq - plus - 1;
+            int length3 = eqlength - eq - 1;
+
+            int i = 1;
+            int perehod = 0;
+            int firstch, secondch, thirdch, result;
+
+            char[] first = new char[length1];
+            char[] second = new char[length2];
+            char[] third = new char[length3];
+
+            equation.getChars(0, plus, first, 0);
+            equation.getChars(plus + 1, eq, second, 0);
+            equation.getChars(eq + 1, eqlength, third, 0);
+
+            // System.out.println(plus);
+            // System.out.println(eq);
+            // System.out.println(length1);
+            // System.out.println(length2);
+            // System.out.println(length3);
+            // System.out.println(first[0]);
+            // System.out.println(second[0]);
+            // System.out.println(third[0]);
+
+            if (length1 > length3 || length2 > length3) {
                 System.out.println("Equation is not satisfied.");
+                scanner.close();
+                return;
             }
-        } else {
-            System.out.println("Invalid equation format. Please use '?' for unknown digits.");
-        }
 
-        scanner.close();
+            if (length1 == length2 && length2 == length3 - 1) {
+                if (third[0] == '?')
+                    third[0] = '1';
+                if (first[0] == '?' && second[0] == '?' && (third[1] == '8' || third[1] == '9')) {
+                    first[0] = '9';
+                    second[0] = '9';
+                } else if (first[0] == '1' && second[0] == '?' && third[1] == '?') {
+                    second[0] = '9';
+                    third[1] = '0';
+                } else if (first[0] == '?' && second[0] == '1' && third[1] == '?') {
+                    first[0] = '9';
+                    third[1] = '0';
+                }
+            } else if (length1 == length3 - 1) {
+                if (third[0] == '?')
+                    third[0] = '1';
+                if (first[0] == '?' && third[1] == '?') {
+                    first[0] = '9';
+                    third[1] = '0';
+                }
+            } else if (length2 == length3 - 1) {
+                if (third[0] == '?')
+                    third[0] = '1';
+                if (second[0] == '?' && third[1] == '?') {
+                    second[0] = '9';
+                    third[1] = '0';
+                }
+            }
+
+            while (i <= length3) {
+                firstch = i <= length1 ? (int) first[length1 - i] - 48 : 0;
+                secondch = i <= length2 ? (int) second[length2 - i] - 48 : 0;
+                thirdch = (int) third[length3 - i] - 48;
+                if (firstch > 9) {
+                    if (secondch > 9 || thirdch > 9) {
+                        System.out.println("Equation is not satisfied.");
+                        scanner.close();
+                        return;
+                    } else {
+                        result = thirdch - secondch - perehod;
+                        if (result < 0) {
+                            result += 10;
+                            perehod = 1;
+                        } else
+                            perehod = 0;
+                        first[length1 - i] = (char) (result + 48);
+                    }
+                } else if (secondch > 9) {
+                    if (thirdch > 9) {
+                        System.out.println("Equation is not satisfied.");
+                        scanner.close();
+                        return;
+                    } else {
+                        result = thirdch - firstch - perehod;
+                        if (result < 0) {
+                            result += 10;
+                            perehod = 1;
+                        } else
+                            perehod = 0;
+                        second[length2 - i] = (char) (result + 48);
+                    }
+                } else if (thirdch > 9) {
+                    result = firstch + secondch + perehod;
+                    if (result > 9) {
+                        result -= 10;
+                        perehod = 1;
+                    } else
+                        perehod = 0;
+                    third[length3 - i] = (char) (result + 48);
+                } else {
+                    result = firstch + secondch + perehod;
+                    if (result > 9) {
+                        result -= 10;
+                        perehod = 1;
+                    } else
+                        perehod = 0;
+                    if (result != thirdch) {
+                        System.out.println("Equation is not satisfied.");
+                        scanner.close();
+                        return;
+                    }
+                }
+                i++;
+            }
+            if (first[0] == '0' || second[0] == '0' || third[0] == '0' || perehod == 1) {
+                System.out.println("Equation is not satisfied.");
+                scanner.close();
+                return;
+            } else
+                System.out.println("Equation is satisfied: " + String.valueOf(first) + " + " + String.valueOf(second)
+                        + " = " + String.valueOf(third));
+        }
+        // else {
+        // System.out.println("Invalid equation format. Please use '?' for unknown
+        // digits.");
+
+        // scanner.close();
+        // return;
+        // }
     }
 
     static boolean isValidEquationFormat(String equation) {
