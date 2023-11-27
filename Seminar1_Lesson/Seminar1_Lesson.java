@@ -12,9 +12,8 @@ public class Seminar1_Lesson {
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
         System.out.println("Hello, " + name + ", welcome to the seminar!");
-        scanner.close();
 
-        task0();
+        task0(scanner);
         task1();
         task2();
 
@@ -35,9 +34,11 @@ public class Seminar1_Lesson {
         String fileName = "task8.txt";
         task8(fileName, data);
 
+        scanner.close();
+
     }
 
-    static void task0() {
+    static void task0(Scanner scanner) {
         // В консоли запросить имя пользователя. В зависимости от
         // текущего времени, вывести приветствие вида
         // "Доброе утро, <Имя>!", если время от 05:00 до 11:59
@@ -46,9 +47,8 @@ public class Seminar1_Lesson {
         // "Доброй ночи, <Имя>!", если время от 23:00 до 4:59
 
         System.out.println("Input your name: ");
-        Scanner scanner = new Scanner(System.in);
+        // Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
-        scanner.close();
 
         LocalTime localTime = LocalTime.now();
         int hour = localTime.getHour();
