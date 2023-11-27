@@ -1,7 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
+// import java.io.Writer;
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -12,6 +12,7 @@ public class Seminar1_Lesson {
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
         System.out.println("Hello, " + name + ", welcome to the seminar!");
+        scanner.close();
 
         task0();
         task1();
@@ -47,6 +48,7 @@ public class Seminar1_Lesson {
         System.out.println("Input your name: ");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
+        scanner.close();
 
         LocalTime localTime = LocalTime.now();
         int hour = localTime.getHour();
